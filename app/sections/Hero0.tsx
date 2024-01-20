@@ -1,0 +1,55 @@
+import React, { useState } from "react";
+import "../animations/animate.css";
+import AnimatedBody from "../animations/AnimatedBody";
+import AnimatedTitle from "../animations/AnimatedTitle";
+import ImagePopup from "./ImagePopup"; // Import your modal component
+
+const About = () => {
+    // State to manage the visibility of each pop-up
+    const [showPopup1, setShowPopup1] = useState(false);
+    const [showPopup2, setShowPopup2] = useState(false);
+    const [showPopup3, setShowPopup3] = useState(false);
+
+    return (
+        <section className="relative z-10 w-full items-center justify-center overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 pb-36 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56" id="about">
+            <div className="mx-auto flex w-[90%] flex-col items-center justify-center lg:max-w-[1212.8px]">
+                <AnimatedTitle
+                    text={"WHO BUILT DUTCH FORT?"}
+                    className={"mb-10 text-left text-[40px] font-bold leading-[0.9em] tracking-tighter text-[#e4ded7] sm:text-[45px] md:mb-16 md:text-[60px] lg:text-[80px]"}
+                    wordSpace={"mr-[14px]"}
+                    charSpace={"mr-[0.001em]"}
+                />
+
+                <div className="mx-auto flex w-[100%] flex-col lg:max-w-[1200px] lg:flex-row lg:gap-20">
+                    <div className="mb-10 flex w-[100%] flex-col gap-4 text-[18px] font-medium  leading-relaxed tracking-wide text-[#e4ded7] md:mb-16 md:gap-6 md:text-[20px] md:leading-relaxed lg:mb-16  lg:max-w-[90%] lg:text-[24px] ">
+                        <AnimatedBody text="Initially built by the Portuguese in the 16th century during their conquests, the fort was later fortified and conquered by the Dutch in the 17th century, until it later fell to the might of the British. The old town of Galle was once used as a trading port for spices and other goods for over 200 years." />
+
+                        <AnimatedBody
+                            delay={0.1}
+                            text="Whether I’m designing a sleek user interface or coding a complex application, I’m always striving to create something unique and innovative. I love experimenting with new technologies and staying up-to-date with the latest trends in the tech world."
+                        />
+
+                        <AnimatedBody
+                            delay={0.2}
+                            text="Right now, I’m working on some exciting projects that I can’t wait to share with you. But I’m always open to new opportunities and collaborations."
+                        />
+                    </div>
+                </div>
+
+                {/* Clickable Images */}
+                <div className="flex gap-4">
+                    <img src="image1.jpg" alt="Image 1" className="cursor-pointer" onClick={() => setShowPopup1(true)} />
+                    <img src="image2.jpg" alt="Image 2" className="cursor-pointer" onClick={() => setShowPopup2(true)} />
+                    <img src="image3.jpg" alt="Image 3" className="cursor-pointer" onClick={() => setShowPopup3(true)} />
+                </div>
+
+                {/* Pop-ups */}
+                <ImagePopup isOpen={showPopup1} onClose={() => setShowPopup1(false)} imageSrc="image1.jpg" />
+                <ImagePopup isOpen={showPopup2} onClose={() => setShowPopup2(false)} imageSrc="image2.jpg" />
+                <ImagePopup isOpen={showPopup3} onClose={() => setShowPopup3(false)} imageSrc="image3.jpg" />
+            </div>
+        </section>
+    );
+};
+
+export default About;
